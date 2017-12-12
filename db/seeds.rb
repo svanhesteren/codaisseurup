@@ -7,8 +7,19 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.destroy_all
+Theme.destroy_all
 
-user1 = User.create!(email: "haha@haha.com", password: "123456")
+sci_fi = Theme.create!(name:"Science Fiction")
+medieval = Theme.create!(name:"Medieval")
+post_modern = Theme.create!(name:"Post-Modernism")
+circus = Theme.create!(name:"Circus' in town")
+eight_bit = Theme.create!(name:"8-Bit")
+zombies = Theme.create!(name:"All your zombies are belong to us")
+hackers = Theme.create!(name:"Hack all the things!")
+chocolate = Theme.create!(name: "Chocolate connaisseurs")
+
+user1 = User.create!(email: "a@a.a", password: "aaaaaa")
+user2 = User.create!(email: "henk@frietisgoud.lekkah", password: "lekker")
 
 start_time = DateTime.current
 end_time = start_time+1
@@ -24,10 +35,11 @@ event1 = Event.create!(
   ends_at: end_time,
   includes_food: true,
   includes_drinks: true,
-  description: "Best party of your life!"
+  description: "Best party of your life!",
+  themes: [zombies, eight_bit, circus]
 )
 
-puts "Created #{event1.name}." if event1
+# puts "Created #{event1.name}." if event1
 
 event2 = Event.create!(
   user_id: user1.id,
@@ -40,9 +52,10 @@ event2 = Event.create!(
   ends_at: end_time,
   includes_food: true,
   includes_drinks: true,
-  description: "Better party of your life!"
+  description: "Better party of your life!",
+  themes: [medieval, post_modern, chocolate]
 )
-puts "Created #{event2.name}." if event2
+# puts "Created #{event2.name}." if event2
 
 # t.string :name
 # t.text :description

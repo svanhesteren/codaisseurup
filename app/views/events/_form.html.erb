@@ -37,22 +37,18 @@
 
   <div class="form-group">
     <label>Start date</label>
-    <%= f.date_field :starts_at, placeholder: "Start date", class: "form-control" %>
+    <%= f.datetime_field :starts_at, placeholder: "Start date", class: "form-control" %>
   </div>
 
   <div class="form-group">
     <label>End date</label>
-    <%= f.date_field :ends_at, placeholder: "End date", class: "form-control" %>
+    <%= f.datetime_field :ends_at, placeholder: "End date", class: "form-control" %>
   </div>
 
   <div class="form-group">
     <label>Description</label>
     <%= f.text_area :description, rows: 5, placeholder: "Say something about your event", class: "form-control" %>
   </div>
-
-
-
-
 
   <label>Amenities</label>
 
@@ -63,7 +59,13 @@
     <%= f.check_box :includes_drinks %> Drinks included?
   </div>
 
+  <label>Themes</label>
 
+  <%= f.collection_check_boxes(:theme_ids, Theme.all, :id, :name) do |b| %>
+    <div class="form-group">
+      <%= b.check_box(class: "check_box") %> <%= b.object.name %>
+    </div>
+  <% end %>
 
   <label>Publish this place?</label>
 
