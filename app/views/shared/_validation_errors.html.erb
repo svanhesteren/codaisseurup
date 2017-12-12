@@ -1,0 +1,9 @@
+<% if object.errors.count > 0 then%>
+  <label>Error!</label>
+  <ul>
+    <% object.errors.full_messages.each do |msg| %>
+      <p class="alert alert-danger"><%= msg %></p>
+    <% end %>
+  </ul>
+  <br>
+<% end %>

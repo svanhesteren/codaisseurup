@@ -1,7 +1,5 @@
 <%= form_for @profile do |f| %>
-  <% @profile.errors.full_messages.each do |msg| %>
-    <p class="alert alert-danger"><%= msg %></p>
-  <% end %>
+  <%= render 'shared/validation_errors', object: f.object %>
 
   <div class="form-group">
     <label>First Name</label>

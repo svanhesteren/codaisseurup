@@ -1,14 +1,6 @@
 <%= form_for @event do |f| %>
+  <%= render 'shared/validation_errors', object: f.object %>
 
-  <% if @event.errors.count > 0 then%>
-    <label>Error!</label>
-    <ul>
-      <% @event.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-    <br>
-  <% end %>
 
   <div class="form-group">
     <label>Name</label>
