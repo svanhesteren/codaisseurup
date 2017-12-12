@@ -1,0 +1,77 @@
+<%= form_for @event do |f| %>
+
+  <% if @event.errors.count > 0 then%>
+    <label>Error!</label>
+    <ul>
+      <% @event.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+    <br>
+  <% end %>
+
+  <div class="form-group">
+    <label>Name</label>
+    <%= f.text_field :name, placeholder: "Event name", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label>Location</label>
+    <%= f.text_field :location, placeholder: "Location", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label>Category</label>
+    <%= f.select :category, Event::EVENT_TYPES, prompt: "Select event category", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label>Max visitors</label>
+    <%= f.number_field :capacity, placeholder: "Max visitors", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label>Price $ </label>
+    <%= f.number_field :price, placeholder: "Price $ ", class: "form-control", :step => 0.01 %>
+  </div>
+
+  <div class="form-group">
+    <label>Start date</label>
+    <%= f.date_field :starts_at, placeholder: "Start date", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label>End date</label>
+    <%= f.date_field :ends_at, placeholder: "End date", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label>Description</label>
+    <%= f.text_area :description, rows: 5, placeholder: "Say something about your event", class: "form-control" %>
+  </div>
+
+
+
+
+
+  <label>Amenities</label>
+
+  <div class="form-group">
+    <%= f.check_box :includes_food %> Food included?
+  </div>
+  <div class="form-group">
+    <%= f.check_box :includes_drinks %> Drinks included?
+  </div>
+
+
+
+  <label>Publish this place?</label>
+
+  <div class="form-group">
+    <%= f.check_box :active %> Active
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Save", class: "btn btn-primary" %>
+  </div>
+<% end %>

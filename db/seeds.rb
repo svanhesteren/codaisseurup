@@ -11,35 +11,38 @@ User.destroy_all
 user1 = User.create!(email: "haha@haha.com", password: "123456")
 
 start_time = DateTime.current
-end_time = DateTime.current+1
+end_time = start_time+1
 
 event1 = Event.create!(
   user_id: user1.id,
   name: "Awesome party no. 100",
   location: "Humburg",
   price: 9000.95,
+  category: "Dance",
   capacity: 500_000,
   starts_at: start_time,
-  ends_at: start_time+5,
+  ends_at: end_time,
   includes_food: true,
   includes_drinks: true,
   description: "Best party of your life!"
 )
+
+puts "Created #{event1.name}." if event1
 
 event2 = Event.create!(
   user_id: user1.id,
   name: "Awesome party no. 105",
   location: "Berlin",
   price: 9001,
+  category: "Movie",
   capacity: 500_001,
-  starts_at: start_time+20,
-  ends_at: start_time+25,
+  starts_at: start_time,
+  ends_at: end_time,
   includes_food: true,
   includes_drinks: true,
   description: "Better party of your life!"
 )
-
-
+puts "Created #{event2.name}." if event2
 
 # t.string :name
 # t.text :description

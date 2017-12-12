@@ -17,15 +17,16 @@ ActiveRecord::Schema.define(version: 20171212100746) do
 
   create_table "events", force: :cascade do |t|
     t.string "name"
+    t.string "category"
     t.text "description"
     t.string "location"
-    t.decimal "price"
+    t.decimal "price", default: "0.0"
     t.integer "capacity"
-    t.boolean "includes_food"
-    t.boolean "includes_drinks"
+    t.boolean "includes_food", default: false
+    t.boolean "includes_drinks", default: false
     t.datetime "starts_at"
     t.datetime "ends_at"
-    t.boolean "active"
+    t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"

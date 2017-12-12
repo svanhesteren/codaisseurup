@@ -3,11 +3,12 @@
 
   <div class="panel-body">
 
-    <p>Address: <%= @event.location %></p>
+    <p>Location: <%= @event.location %></p>
     <p>Host: <%= @event.user.email %></p>
 
     <!-- Main Info -->
     <h4>Main Info</h4>
+    <p>Category: <%= @event.category %></p>
     <p>Price: $<%= @event.price %></p>
     <p>Max visitors: <%= @event.capacity %> <%= @event.capacity > 1 ? "People" : "Person" %></p>
     <p>Starts at: <%= @event.starts_at.to_formatted_s(:short) %></p>
