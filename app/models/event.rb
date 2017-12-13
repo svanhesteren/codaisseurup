@@ -1,6 +1,7 @@
 class Event < ApplicationRecord
 
   EVENT_TYPES = ['Dance', 'Movie', 'Food', 'Presentation', 'Sport', 'Casual']
+  BARGAIN_PRICE = 20
 
   belongs_to :user
   has_and_belongs_to_many :themes
@@ -9,15 +10,25 @@ class Event < ApplicationRecord
   validates :description, presence: true, length: {maximum: 500}
   validates :starts_at, presence: true
   validates :category, presence: true
-  validates :ends_at, presence: true
-  validate :ends_at_before_starts_at
+  validates :ends_at, presence: true#, :if => {:ends_at_before_starts_at => false}
+  # validates :ends_at_before_starts_at,
 
-  private
+  # private
+
+  def bargain?
+    price < BARGAIN_PRICE
+  end
+
+  def self.order_by_price
+    order :price
+  end
+
 
   def ends_at_before_starts_at
     if ends_at.to_i < starts_at.to_i
       errors.add(:ends_at, "cannot take place before start time")
     end
+    return ends_at.to_i < starts_at.to_i
   end
 
 end

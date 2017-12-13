@@ -6,8 +6,8 @@ FactoryBot.define do
     category          "Movie"
     price             { Faker::Commerce.price }
     capacity          50000
-    starts_at         Faker::Date.forward(0).to_formatted_s(:short)
-    ends_at           Faker::Date.forward(1).to_formatted_s(:short)
+    starts_at         {Faker::Date.forward(0).to_formatted_s(:short)}
+    ends_at           {Faker::Date.forward(1).to_formatted_s(:short)}
     description       { Faker::Lorem.sentence(40) }
     includes_food     true
     includes_drinks   true

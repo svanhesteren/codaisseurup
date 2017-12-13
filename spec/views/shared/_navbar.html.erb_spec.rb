@@ -31,11 +31,11 @@ describe "shared/_navbar.html.erb" do
     # let(:user) { create :user, profile: profile }
     # sign_out user
     #
-    it "renders the login page" do
+    it "renders log in" do
       render
       expect(rendered).to have_content "Log In"
     end
-    it "renders the signup page" do
+    it "renders sign up" do
       render
       expect(rendered).to have_content "Sign Up"
     end
