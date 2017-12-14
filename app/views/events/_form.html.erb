@@ -64,7 +64,7 @@
   <div id="photos">
     <%= render 'photos/list' %>
   </div>
-  
+
   <label>Themes</label>
   <%= f.collection_check_boxes(:theme_ids, Theme.all, :id, :name) do |b| %>
     <div class="form-group">
