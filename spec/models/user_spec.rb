@@ -1,4 +1,4 @@
-describe "association with event" do
+describe "user association with event(s)" do
   let(:user) { create :user }
   let!(:event) { create :event, user: user }
 
@@ -12,5 +12,17 @@ describe "association with event" do
 
   it "deletes associated events" do
     expect { user.destroy }.to change(Event, :count).by(-1)
+  end
+end
+
+describe "user association with profile" do
+  let(:user) {create :user}
+  # let!(:event) {create :event, :user => user}
+  let!(:profile) {create :profile, :user => user}
+
+  context "user.destroy" do
+    it "deletes associated profile" do
+      expect {user.destroy}.to change(Profile, :count).by(-1)
+    end
   end
 end
