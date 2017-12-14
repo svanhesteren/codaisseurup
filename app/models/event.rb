@@ -10,7 +10,7 @@ class Event < ApplicationRecord
   validates :description, presence: true, length: {maximum: 500}
   validates :starts_at, presence: true
   validates :category, presence: true
-  validates :ends_at, presence: true#, :if => {:ends_at_before_starts_at => false}
+  validates :ends_at, presence: true, unless: :ends_at_before_starts_at
   # validates :ends_at_before_starts_at,
 
   # private
@@ -27,8 +27,10 @@ class Event < ApplicationRecord
   def ends_at_before_starts_at
     if ends_at.to_i < starts_at.to_i
       errors.add(:ends_at, "cannot take place before start time")
+      return true
+    else
+      return false
     end
-    return ends_at.to_i < starts_at.to_i
   end
 
 end

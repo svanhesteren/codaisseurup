@@ -4,7 +4,7 @@
   <div class="panel-body">
 
     <p>Location: <%= @event.location %></p>
-    <p>Host: <%= @event.user.email %></p>
+    <p>Host: <%= @event.user.full_name %></p>
 
     <!-- Main Info -->
     <h4>Main Info</h4>
@@ -33,5 +33,5 @@
     <% end %>
   </div>
 </div>
-
 <%= link_to "Back", events_path, class: "btn btn-default" %>
+<%= link_to "Edit", edit_event_path, class: "btn btn-default" %>

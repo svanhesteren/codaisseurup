@@ -55,8 +55,7 @@ RSpec.describe Event, type: :model do
       event = Event.new(description: "a" * 600)
       event.valid?
       expect(event.errors).to have_key(:description)
-      # puts event.errors.full_messages
-      # expect(event.description.length).to be <= 500
+
     end
 
     it "is a bargain if price is lower then $20" do
@@ -70,7 +69,6 @@ RSpec.describe Event, type: :model do
 
 
   describe ".order_by_price" do
-
     #??????????
     # event1 = Event.new(price: 200)
     # event2 = Event.new(price: 1500)

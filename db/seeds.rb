@@ -26,7 +26,7 @@ user2 = User.create!(email: "henk@frietisgoud.lekkah", password: "lekker")
 start_time = DateTime.current
 end_time = start_time+1
 
-descr = Faker::VForVendetta.speech
+
 
 event1 = Event.create!(
   user_id: user1.id,
@@ -35,13 +35,14 @@ event1 = Event.create!(
   price: Faker::Number.decimal(3),
   category: "Dance",
   capacity: Faker::Number.number(5),
-  starts_at: Faker::Date.forward(5),
-  ends_at: Faker::Date.backward(5),
+  starts_at: start_time,
+  ends_at: end_time,
   includes_food: true,
   includes_drinks: true,
-  description: descr[0..496] << "...",
+  description: Faker::VForVendetta.speech[0..496] << "...",
   themes: [zombies, eight_bit, circus]
 )
+
 
 event2 = Event.create!(
   user_id: user1.id,
@@ -50,11 +51,11 @@ event2 = Event.create!(
   price: Faker::Number.decimal(3),
   category: "Movie",
   capacity: Faker::Number.number(5),
-  starts_at: Faker::Date.forward(10),
-  ends_at: Faker::Date.backward(10),
+  starts_at: start_time,
+  ends_at: end_time,
   includes_food: true,
   includes_drinks: true,
-  description: descr[0..496] << "...",
+  description: Faker::VForVendetta.speech[0..496] << "...",
   themes: [medieval, post_modern, chocolate]
 )
 
