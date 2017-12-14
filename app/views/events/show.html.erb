@@ -1,4 +1,5 @@
 <div class="panel panel-primary">
+  <%= link_to "Edit", edit_event_path, class: "btn btn-default" %>
   <div class="panel-heading"><%= @event.name %></div>
 
   <div class="panel-body">
@@ -34,4 +35,3 @@
   </div>
 </div>
 <%= link_to "Back", events_path, class: "btn btn-default" %>
-<%= link_to "Edit", edit_event_path, class: "btn btn-default" %>
