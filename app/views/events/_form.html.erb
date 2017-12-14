@@ -1,10 +1,14 @@
+<!-- <%@eventName = 'start'%> -->
 <%= form_for @event do |f| %>
   <%= render 'shared/validation_errors', object: f.object %>
 
 
   <div class="form-group">
     <label>Name</label>
-    <%= f.text_field :name, placeholder: "Event name", class: "form-control" %>
+    <%= eventField = f.text_field :name, placeholder: "Event name", class: "form-control" %>
+    <!-- <%= eventField %> -->
+    <!-- <%= f.button "Random", options: @eventName = "hi!!", class: "btn" %> -->
+
   </div>
 
   <div class="form-group">
