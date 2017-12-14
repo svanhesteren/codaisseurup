@@ -11,6 +11,6 @@ describe "association with event" do
   end
 
   it "deletes associated events" do
-    expect { user.destroy }.to change(Room, :count).by(-1)
+    expect { user.destroy }.to change(Event, :count).by(-1)
   end
 end

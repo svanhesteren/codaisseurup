@@ -26,18 +26,21 @@ describe "shared/_navbar.html.erb" do
   end
 
   context "without signed in" do
-
     # let(:profile) { build :profile }
-    # let(:user) { create :user, profile: profile }
+    # let(:user) { create :user}
+    after {sign_in user}
+
+    # sign_out
     # sign_out user
     #
     it "renders log in" do
       render
-      expect(rendered).to have_content "Log In"
+      expect(rendered).to have_content("Log In")
     end
+
     it "renders sign up" do
       render
-      expect(rendered).to have_content "Sign Up"
+      expect(rendered).to have_content("Sign Up")
     end
   end
 
