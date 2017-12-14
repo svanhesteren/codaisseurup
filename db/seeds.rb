@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require "faker"
 
+Photo.destroy_all
 User.destroy_all
 Theme.destroy_all
 
@@ -25,7 +26,6 @@ user2 = User.create!(email: "henk@frietisgoud.lekkah", password: "lekker")
 
 start_time = DateTime.current
 end_time = start_time+1
-
 
 
 event1 = Event.create!(
@@ -59,6 +59,8 @@ event2 = Event.create!(
   themes: [medieval, post_modern, chocolate]
 )
 
+scifi_photo = Photo.create!(remote_image_url: 'http://res.cloudinary.com/duplhjlsw/image/upload/v1513262448/scifi_c0szap.jpg', event: event1)
+medieval_photo = Photo.create!(remote_image_url: 'http://res.cloudinary.com/duplhjlsw/image/upload/v1513262449/medieval_hyxyt8.jpg', event: event2)
 #
 # # puts "Created #{event1.name}." if event1
 #
