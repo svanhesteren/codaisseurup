@@ -29,8 +29,13 @@
     <!-- Photos -->
     <h4>Photos</h4>
     <% @event.photos.each do |photo| %>
-      <%= image_tag photo.image, :width => 400, class: "img-responsive"%>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <%= image_tag photo.image.thumbnail %>
+      </div>
+    </div>
     <% end %>
+
 
     <!-- Themes -->
     <h4>Themes</h4>
