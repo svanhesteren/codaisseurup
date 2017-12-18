@@ -47,7 +47,6 @@ RSpec.describe Event, type: :model do
     it "is invalid when ends_at is the same or earlier then starts_at" do
       moment = DateTime.current
       event = Event.new(starts_at: moment, ends_at: moment-1)
-      # event.valid?
       expect(event.ends_at_before_starts_at).to eq(true)
     end
 
@@ -115,5 +114,16 @@ RSpec.describe Event, type: :model do
     # it { is_expected.to have_and_belong_to_many :themes }
   end
 
+  describe "association with registration" do
+    let(:guest_user) { create :user, email: "guest@user.com" }
+    let(:host_user) { create :user, email: "host@user.com" }
+
+    let!(:event) { create :event, user: host_user }
+    let!(:registration) { create :registration, event: event, user: guest_user }
+
+    it "has guests" do
+      expect(event.guests).to include(guest_user)
+    end
+  end
 
 end

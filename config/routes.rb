@@ -13,5 +13,10 @@ Rails.application.routes.draw do
   get "terms" => "pages#terms"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+  namespace :api do
+    resources :events do
+      resources :registrations, only: [:create, :update, :destroy]
+    end
+  end
 
 end

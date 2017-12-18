@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :events, dependent: :destroy
   has_one :profile, dependent: :destroy
+  has_many :registrations, dependent: :destroy
+  has_many :registered_events, through: :registrations, source: :event
 
   def full_name
     return profile.full_name if profile?
