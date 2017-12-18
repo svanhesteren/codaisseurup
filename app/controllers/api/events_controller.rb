@@ -20,13 +20,18 @@ class Api::EventsController < ApplicationController
 
   end
 
+  # def show
+  #   event = Event.find(params[:id])
+  #
+  #   render status: 200, json: {
+  #     event: event
+  #   }.to_json
+  # end
   def show
-    event = Event.find(params[:id])
-
-    render status: 200, json: {
-      event: event
-    }.to_json
+    room = Room.find(params[:id])
+    render status: 200, json: room.as_json(include: :bookings)
   end
+
   private
 
   def event_params
